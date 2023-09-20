@@ -1,0 +1,123 @@
+/* Reset some default styles for consistency */
+body, h1, p, textarea, button {
+    margin: 0;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Set a background color and font styles */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-image: url('LAW.jpg'); /* Replace 'path-to-your-image.jpg' with the actual path to your image */
+    background-size: cover; /* Scale the image to cover the entire element */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+
+/* Style the header */
+h1 {
+    text-align: right;
+    background-color: #00000093;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h3 {
+    text-align: center;
+    background-color: #00000051;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Style the textarea for input */
+textarea {
+    width: 50%;
+    padding: 10px;
+    margin: 50px auto;
+    color: #3b3b3bb1;
+    border: 1px solid #3b3b3bb1;
+    border-radius: 10px;
+    resize: none;
+    font-size: 16px;
+    justify-self: center;
+    align-self: center;
+}
+
+/* Style the summarize button */
+button {
+    display: block;
+    margin: 20px ;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the result container */
+#summaryResult {
+    width: 20%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(8, 8, 8, 0.518);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: whitesmoke;
+}
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    #summaryResult {
+        font-size: 16px;
+    }
+}
+
+/* Define a CSS animation */
+@keyframes printing-animation {
+    0% {
+        width: 0; /* Start with no width (hidden) */
+    }
+    50% {
+        width: 100%; /* Animate to full width (fully visible) */
+    }
+    100% {
+        width: 0; /* Animate back to no width (hidden) */
+    }
+}
+
+/* Style the container */
+.printing-container {
+    overflow: hidden; /* Hide overflowing content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: printing-animation 8s linear infinite alternate; /* Apply the animation */
+    justify-self: left;
+}
+
+/* Style the content inside the container */
+.printing-content {
+    font-size: 18px;
+    color: #f0f0f0
+}

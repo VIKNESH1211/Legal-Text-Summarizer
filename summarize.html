@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Summarizer</title>
+    <link rel="stylesheet" href="summ.css">
+
+</head>
+<body>
+    <h1>Legal Summarizer</h1>
+    <div class="printing-container">
+    <h3 class="printing-content">The best AI based Legal Document Summarizer which will be able to generate summary out of your law statements</h3>
+    </div>
+    <textarea id="inputText" rows="10" cols="50" placeholder="Enter text to summarize"></textarea>
+
+
+    <div style="display: flex; flex-direction: row-reverse; ">
+    <button id="translateButton">Translate Summary</button>
+    <button id="summarizeButton">Summarize</button>
+    </div>
+
+    <div id="summaryResult"></div>
+
+
+    <script>
+                document.getElementById("summarizeButton").addEventListener("click", function () {
+    const inputText = document.getElementById("inputText").value;
+
+    fetch("http://localhost:8000/summarize", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            text: inputText,
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        const summaryResult = document.getElementById("summaryResult");
+        summaryResult.innerText = data.summary;
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+});
+
+
+document.getElementById("translateButton").addEventListener("click", function () {
+            const summaryText = document.getElementById("summaryResult").innerText;
+
+            fetch("http://localhost:8000/translate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    text: summaryText,
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                const translatedSummary = data.translation;
+
+                // Display the translated summary in the summaryResult div
+                const summaryResult = document.getElementById("summaryResult");
+                summaryResult.innerText = translatedSummary;
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+        });
+
+
+    </script>
+</body>
+</html>
