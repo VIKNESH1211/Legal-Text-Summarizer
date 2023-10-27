@@ -3,7 +3,7 @@ import pandas as pd
 import re
 import torch
 from pydantic import BaseModel
-from transformers import PegasusForConditionalGeneration, PegasusTokenizer
+#from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
